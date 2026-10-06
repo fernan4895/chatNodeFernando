@@ -1,5 +1,4 @@
-var socket = io.connect('http://localhost:4000');
-
+var socket = io();
 var persona = document.getElementById('persona');
 var appChat = document.getElementById('app-chat');
 var panelBienvenida = document.getElementById('panel-bienvenida');
@@ -41,6 +40,15 @@ socket.on('typing', function(data) {
     }
 });
 
+function ingresarAlChat(){
+    if (persona.value) {
+        panelBienvenida.style.display = "none";
+        appChat.style.display = "block";
+        var nombreDeUsuario = persona.value;
+        usuario.value = nombreDeUsuario;
+        usuario.readOnly = true;
+    }
+}
 function ingresarAlChat(){
     if (persona.value) {
         panelBienvenida.style.display = "none";
